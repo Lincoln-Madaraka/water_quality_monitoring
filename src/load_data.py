@@ -1,3 +1,5 @@
+import pandas as pd
+
 def load_csv(filepath: str) -> pd.DataFrame:
     """
     Load sensor data from a CSV file.
@@ -8,3 +10,9 @@ def load_csv(filepath: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Loaded data as a pandas DataFrame.
     """
+     try:
+        df = pd.read_csv(file_path)
+        return df
+    except FileNotFoundError:
+        print(f"Error: File {file_path} not found.")
+        return pd.DataFrame()
